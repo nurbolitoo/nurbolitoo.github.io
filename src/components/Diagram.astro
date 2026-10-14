@@ -1,0 +1,188 @@
+---
+import type { Diagram } from '../data/projects';
+
+interface Props {
+  diagram: Diagram;
+}
+
+const { diagram: d } = Astro.props;
+
+const isLink = (s: string) => /^[→←↔·]/.test(s);
+const parseLink = (s: string) => ({ arrow: s[0], label: s.slice(1).trim() });
+const parseNode = (s: string) => (s.startsWith('*') ? { text: s.slice(1), main: true } : { text: s, main: false });
+---
+
+<figure class="diagram card">
+  <figcaption>{d.title}</figcaption>
+  {
+    d.type === 'flow' ? (
+      <ol class="flow">
+        {d.steps.map((s, i) => (
+          <li>
+            <span class="step">
+              <span class="n">{String(i + 1).padStart(2, '0')}</span>
+              {s}
+            </span>
+            {i < d.steps.length - 1 && <span class="arrow" aria-hidden="true">→</span>}
+          </li>
+        ))}
+      </ol>
+    ) : (
+      <div class="arch">
+        {d.rows.map((row) => (
+          <div class="row">
+            {row.map((item) => {
+              if (isLink(item)) {
+                const l = parseLink(item);
+                return (
+                  <span class:list={['link', { dotsep: l.arrow === '·' }]}>
+                    <span class="arrow" aria-hidden="true">{l.arrow}</span>
+                    {l.label && <span class="label">{l.label}</span>}
+                  </span>
+                );
+              }
+              const n = parseNode(item);
+              return <span class:list={['node', { main: n.main }]}>{n.text}</span>;
+            })}
+          </div>
+        ))}
+      </div>
+    )
+  }
+  {d.note && <p class="note">{d.note}</p>}
+</figure>
+
+<style>
+  .diagram {
+    margin: 0;
+    padding: 22px;
+    display: grid;
+    gap: 18px;
+    box-shadow: none;
+    background:
+      radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--muted) 22%, transparent) 1px, transparent 0) 0 0 / 18px 18px,
+      var(--surface);
+  }
+  figcaption {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .flow {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    row-gap: 10px;
+  }
+  .flow li {
+    display: flex;
+    align-items: center;
+  }
+  .step {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 13px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    font-weight: 600;
+    font-size: 14.5px;
+    line-height: 1.25;
+  }
+  .flow li:last-child .step {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+  }
+  .n {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--accent);
+  }
+  .arrow {
+    color: var(--muted);
+    padding: 0 8px;
+    font-size: 16px;
+  }
+  .arch {
+    display: grid;
+    gap: 12px;
+  }
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    row-gap: 8px;
+  }
+  .node {
+    padding: 9px 13px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    font-weight: 600;
+    font-size: 14.5px;
+    line-height: 1.25;
+  }
+  .node.main {
+    background: var(--text);
+    color: var(--bg);
+    border-color: var(--text);
+  }
+  .link {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 6px;
+    min-width: 34px;
+  }
+  .link .arrow {
+    padding: 0;
+    line-height: 1;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .link.dotsep .arrow {
+    color: var(--muted);
+  }
+  .link .label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    text-align: center;
+    max-width: 150px;
+    overflow-wrap: anywhere;
+    margin-top: 3px;
+  }
+  @media (max-width: 600px) {
+    .row {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .link {
+      flex-direction: row;
+      gap: 8px;
+      padding: 2px 0 2px 14px;
+    }
+    .link .arrow {
+      display: inline-block;
+      transform: rotate(90deg);
+    }
+    .link .label {
+      max-width: none;
+      margin-top: 0;
+      text-align: left;
+    }
+  }
+  .note {
+    color: var(--muted);
+    font-size: 14.5px;
+    border-top: 1px dashed var(--line);
+    padding-top: 14px;
+  }
+</style>
