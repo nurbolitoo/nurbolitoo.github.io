@@ -283,7 +283,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'dc-control',
-    title: 'Ploshchadka — data center construction management',
+    title: 'DC — data center construction management',
     category: 'Construction Tech · ERP · IoT',
     card: 'A web system for a contractor building a data center: timesheets from Hikvision face recognition (FaceID) terminals, work orders, a materials warehouse with consumption norms, equipment tracking and reports. Mobile-first interface for foremen on site.',
     lead: 'A web system for a contractor building a data center. It tracks staff, work orders, work acceptance, materials and equipment. Attendance is recorded automatically: Hikvision face recognition (FaceID) terminals stand at the entrance — the device recognizes the employee’s face and logs the pass without badges or cards.',
