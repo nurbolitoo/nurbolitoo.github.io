@@ -1,19 +1,22 @@
 ---
 import type { Project } from '../data/projects';
 import { withBase } from '../lib/url';
+import { localePath, ui, type Lang } from '../i18n';
 
 interface Props {
   project: Project;
   index: number;
+  lang: Lang;
 }
 
-const { project: p, index } = Astro.props;
+const { project: p, index, lang } = Astro.props;
+const href = localePath(lang, `projects/${p.slug}/`);
 const num = String(index + 1).padStart(2, '0');
 const shot = p.cover ? { src: p.cover } : p.images?.[0];
 ---
 
 <article class="pcard card" style={`--hue:${p.hue}`}>
-  <a class:list={['cover', { 'has-shot': shot }]} href={withBase(`projects/${p.slug}/`)} aria-hidden="true" tabindex="-1">
+  <a class:list={['cover', { 'has-shot': shot }]} href={href} aria-hidden="true" tabindex="-1">
     <span class="num">{num}</span>
     <span class="status"><span class="dot"></span>{p.status}</span>
     {
@@ -34,7 +37,7 @@ const shot = p.cover ? { src: p.cover } : p.images?.[0];
   <div class="body">
     <div class="eyebrow">{p.category}</div>
     <h3>
-      <a href={withBase(`projects/${p.slug}/`)}>{p.title}</a>
+      <a href={href}>{p.title}</a>
     </h3>
     <p class="desc">{p.card}</p>
     {
@@ -52,7 +55,7 @@ const shot = p.cover ? { src: p.cover } : p.images?.[0];
     <ul class="tags">
       {p.cardTags.map((t) => <li class="tag">{t}</li>)}
     </ul>
-    <span class="more" aria-hidden="true">Читать кейс →</span>
+    <span class="more" aria-hidden="true">{ui[lang].readCase}</span>
   </div>
 </article>
 

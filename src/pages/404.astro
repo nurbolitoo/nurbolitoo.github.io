@@ -1,20 +1,28 @@
 ---
 import Base from '../layouts/Base.astro';
-import { withBase } from '../lib/url';
+import { localePath, ui } from '../i18n';
+
+// Одна страница 404 на оба языка: GitHub Pages отдаёт её для любого несуществующего адреса
+const ru = ui.ru;
+const en = ui.en;
 ---
 
-<Base title="Страница не найдена" description="Такой страницы нет.">
+<Base lang="ru" path="" title={`${ru.notFoundText} · ${en.notFoundText}`} description={ru.notFoundText}>
   <section class="wrap nf">
     <p class="eyebrow">404</p>
-    <h1>Такой страницы нет</h1>
-    <a class="btn btn-primary" href={withBase('')}>На главную</a>
+    <h1>{ru.notFoundTitle}</h1>
+    <p class="en" lang="en">{en.notFoundTitle}</p>
+    <div class="actions">
+      <a class="btn btn-primary" href={localePath('ru', '')}>{ru.toHome}</a>
+      <a class="btn" href={localePath('en', '')} lang="en">{en.toHome}</a>
+    </div>
   </section>
 </Base>
 
 <style>
   .nf {
     display: grid;
-    gap: 20px;
+    gap: 16px;
     justify-items: start;
     padding-top: 120px;
     padding-bottom: 160px;
@@ -22,5 +30,15 @@ import { withBase } from '../lib/url';
   h1 {
     font-size: clamp(36px, 6vw, 60px);
     font-weight: 800;
+  }
+  .en {
+    color: var(--muted);
+    font-size: 20px;
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 8px;
   }
 </style>

@@ -1,0 +1,24 @@
+---
+import CasePage from '../../../components/CasePage.astro';
+import { getProjects } from '../../../i18n';
+import type { Project } from '../../../data/projects';
+
+export function getStaticPaths() {
+  const projects = getProjects('en');
+  // «Следующий проект» листает только проекты того же вида (коммерческие или учебные)
+  return projects.map((project) => {
+    const group = projects.filter((x) => (x.kind ?? 'commercial') === (project.kind ?? 'commercial'));
+    const next = group[(group.indexOf(project) + 1) % group.length];
+    return { params: { slug: project.slug }, props: { project, next: next === project ? undefined : next } };
+  });
+}
+
+interface Props {
+  project: Project;
+  next?: Project;
+}
+
+const { project, next } = Astro.props;
+---
+
+<CasePage project={project} next={next} lang="en" />

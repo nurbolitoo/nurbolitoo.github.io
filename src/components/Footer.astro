@@ -1,5 +1,11 @@
 ---
-import { profile } from '../data/profile';
+import { getProfile, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { profile } = getProfile(Astro.props.lang);
 const year = new Date().getFullYear();
 ---
 

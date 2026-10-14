@@ -3,24 +3,32 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { withBase } from '../lib/url';
+import { langs, localePath, ui, type Lang } from '../i18n';
 
 interface Props {
   title: string;
   description: string;
+  lang: Lang;
+  // Путь страницы без языкового префикса, например '' или 'projects/xts/'
+  path: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, lang, path } = Astro.props;
+const t = ui[lang];
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const alternates = langs.map((l) => ({ lang: l, href: new URL(localePath(l, path), Astro.site) }));
 ---
 
 <!doctype html>
-<html lang="ru">
+<html lang={t.htmlLang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {alternates.map((a) => <link rel="alternate" hreflang={a.lang} href={a.href} />)}
+    <link rel="alternate" hreflang="x-default" href={alternates[0].href} />
     <!-- ?v= — сбрасывает кэш иконок в браузере; при смене логотипа увеличьте номер -->
     <link rel="icon" href={withBase('favicon.ico?v=2')} sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href={withBase('favicon-32.png?v=2')} />
@@ -31,7 +39,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:locale" content={t.ogLocale} />
     <meta name="theme-color" content="#0d0e10" media="(prefers-color-scheme: dark)" />
     <meta name="theme-color" content="#f5f4ef" media="(prefers-color-scheme: light)" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -48,10 +56,10 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     </script>
   </head>
   <body>
-    <Header />
+    <Header lang={lang} path={path} />
     <main>
       <slot />
     </main>
-    <Footer />
+    <Footer lang={lang} />
   </body>
 </html>
