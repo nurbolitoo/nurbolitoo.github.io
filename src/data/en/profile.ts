@@ -59,7 +59,7 @@ export const experience = [
     title: 'Backend Developer',
     place: 'ABS LAB LLP, Astana · Astana Hub tech park resident',
     items: [
-      'Three commercial systems in production: StroyMarket (lead developer), XTS and DC Control (team member).',
+      'Three commercial systems in production: StroyMarket, XTS and DC Control — lead developer on all three.',
       'Backend in Python and TypeScript, integrations with external APIs, payment systems and hardware, deployment and server support.',
     ],
   },

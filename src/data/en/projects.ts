@@ -145,7 +145,7 @@ export const projects: Project[] = [
     card: 'An ERPNext/Frappe ERP for a contractor that builds and maintains mobile operators’ base stations. Orders run from automatic import out of the operator portal to work handover and payment: warehouse, purchasing, roles, notifications and a management dashboard.',
     lead: 'A corporate ERP system on ERPNext/Frappe for a contractor doing construction, installation and design work on the base stations of major Kazakhstan mobile operators. The system runs each order from receipt in the operator portal to work handover and payment: approval, site survey, purchasing, warehouse, subcontractors, acceptance, 1C integration and analytics for management.',
     status: 'In production',
-    role: 'Fullstack developer and integrator in a team: development, rollout and production support',
+    role: 'Lead developer: development, integrations, rollout and production support (except the 1C integration)',
     linkNote: 'Internal corporate system, login required',
     hue: 210,
     images: [
@@ -288,7 +288,7 @@ export const projects: Project[] = [
     card: 'A web system for a contractor building a data center: timesheets from Hikvision face recognition (FaceID) terminals, work orders, a materials warehouse with consumption norms, equipment tracking and reports. Mobile-first interface for foremen on site.',
     lead: 'A web system for a contractor building a data center. It tracks staff, work orders, work acceptance, materials and equipment. Attendance is recorded automatically: Hikvision face recognition (FaceID) terminals stand at the entrance — the device recognizes the employee’s face and logs the pass without badges or cards.',
     status: 'Running on a real construction site',
-    role: 'Fullstack developer in a team',
+    role: 'Lead developer: backend, Vue interface, Hikvision integration, deployment (except the 1C integration)',
     linkNote: 'Internal corporate system, login required',
     hue: 152,
     images: [
