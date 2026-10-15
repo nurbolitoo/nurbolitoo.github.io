@@ -59,8 +59,16 @@ export const experience = [
     title: 'Backend Developer',
     place: 'ABS LAB LLP, Astana · Astana Hub tech park resident',
     items: [
-      'Four commercial systems in production: StroyMarket (lead developer), Komek Desk (sole developer), XTS and DC Control (team member).',
+      'Three commercial systems in production: StroyMarket (lead developer), XTS and DC Control (team member).',
       'Backend in Python and TypeScript, integrations with external APIs, payment systems and hardware, deployment and server support.',
+    ],
+  },
+  {
+    period: '2026',
+    title: 'Fullstack Developer, freelance',
+    place: 'Komek Desk · separate client',
+    items: [
+      'Sole developer of a Service Desk for an industrial company with 12 branches: React portal on top of GLPI, analytics, infrastructure, CI/CD and deployment.',
     ],
   },
   {
