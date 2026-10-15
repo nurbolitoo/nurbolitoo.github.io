@@ -16,6 +16,9 @@ const year = new Date().getFullYear();
       <a href={`mailto:${profile.contacts.email}`}>Email</a>
       <a href={profile.contacts.github} target="_blank" rel="noopener">GitHub</a>
       <a href={profile.contacts.gitlab} target="_blank" rel="noopener">GitLab</a>
+      <a href={profile.contacts.telegram} target="_blank" rel="noopener">Telegram</a>
+      <a href={profile.contacts.instagram} target="_blank" rel="noopener">Instagram</a>
+      <a href={profile.contacts.linkedin} target="_blank" rel="noopener">LinkedIn</a>
     </span>
   </div>
 </footer>
@@ -35,7 +38,8 @@ const year = new Date().getFullYear();
   }
   .links {
     display: flex;
-    gap: 18px;
+    flex-wrap: wrap;
+    gap: 8px 18px;
   }
   .links a {
     text-decoration: none;
