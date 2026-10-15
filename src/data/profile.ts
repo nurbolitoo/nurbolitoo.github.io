@@ -55,7 +55,7 @@ export const skills = [
   { group: 'Backend', items: ['Python', 'Frappe / ERPNext', 'Node.js', 'TypeScript', 'Medusa v2', 'Django', 'REST API'] },
   { group: 'Frontend', items: ['React', 'Next.js', 'Vue 3', 'Vite', 'Ant Design', 'PrimeVue', 'Recharts', 'Flutter'] },
   { group: 'Базы данных', items: ['PostgreSQL', 'MariaDB / MySQL', 'Redis', 'MongoDB'] },
-  { group: 'Интеграции', items: ['Kaspi Pay', 'Hikvision FaceID (ISAPI)', 'GLPI API', 'Google Gemini', 'JWT / OpenAPI'] },
+  { group: 'Интеграции', items: ['Kaspi Pay', 'Hikvision FaceID (ISAPI)', '1С (HTTP-сервисы)', 'GLPI API', 'Google Gemini', 'JWT / OpenAPI'] },
   { group: 'Инфраструктура', items: ['Linux', 'Docker', 'Nginx', 'Caddy', 'GitLab CI', 'Cloudflare Tunnel'] },
   { group: 'Наблюдаемость', items: ['Grafana', 'Prometheus'] },
 ];
