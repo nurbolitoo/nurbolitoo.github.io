@@ -55,12 +55,12 @@ export const skills = [
 
 export const experience = [
   {
-    period: '2026 — present',
+    period: 'April 2026 — present',
     title: 'Backend Developer',
-    place: 'ABS LAB LLP, Astana',
+    place: 'ABS LAB LLP, Astana · Astana Hub tech park resident',
     items: [
-      'Software development company, resident of the Astana Hub tech park.',
-      'Backend development of the company’s commercial projects.',
+      'Four commercial systems in production: StroyMarket (lead developer), Komek Desk (sole developer), XTS and DC Control (team member).',
+      'Backend in Python and TypeScript, integrations with external APIs, payment systems and hardware, deployment and server support.',
     ],
   },
   {

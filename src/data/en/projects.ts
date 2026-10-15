@@ -9,7 +9,7 @@ export const projects: Project[] = [
     card: 'A building materials marketplace where an AI assistant replaces the catalog: the buyer describes the job in text, voice or a photo, and the assistant calculates materials, fills the cart and takes Kaspi payment right in the chat.',
     lead: 'A building materials marketplace for Kazakhstan. Instead of browsing a catalog, the buyer talks to an AI assistant: describes the job in text, voice or a photo, and the assistant calculates materials, picks products, places the order and takes payment via Kaspi in the chat. Several seller companies work on one platform, and the catalog syncs with their 1C.',
     status: 'Production environment with a real seller',
-    role: 'Fullstack developer in a team',
+    role: 'Lead developer: almost the whole project except the 1C warehouse module',
     link: { href: 'https://stand.kenenai.com/kz/', label: 'stand.kenenai.com' },
     hue: 28,
     images: [
@@ -90,7 +90,7 @@ export const projects: Project[] = [
           'Sale price = cost price × the company’s markup. The 1C password is stored encrypted.',
           'Automatic product categorization. Missing items are taken off the storefront but not deleted.',
         ],
-        note: 'The 1C integration in this project was built by another developer on the team.',
+        note: 'The 1C warehouse module was built by another developer on the team; I integrated it into the marketplace.',
       },
       {
         title: 'Back office',
@@ -118,7 +118,7 @@ export const projects: Project[] = [
       { group: 'Storefront', items: ['Next.js 15 (App Router, RSC)', 'React 19', 'Tailwind CSS', 'Medusa JS SDK'] },
       { group: 'Admin and clients', items: ['Medusa Admin', 'Vite', '@medusajs/ui', 'TanStack Query', 'Flutter'] },
       { group: 'AI', items: ['Google Gemini (Flash Lite)', 'function calling', 'STT', 'document data extraction'] },
-      { group: 'Integrations', items: ['Kaspi Pay', 'phone OTP', '1C:Fresh (built by another developer)'] },
+      { group: 'Integrations', items: ['Kaspi Pay', 'phone OTP', '1C:Fresh (warehouse module by another developer)'] },
       { group: 'Infrastructure', items: ['Docker Compose', 'Nginx', 'Cloudflare Tunnel', 'VPS'] },
       { group: 'Quality', items: ['Jest', 'ESLint', 'screenshot tests (headless Chrome)', 'assistant QA runs'] },
     ],

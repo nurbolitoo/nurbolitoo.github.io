@@ -37,6 +37,10 @@ const thumbsFor = (p: (typeof projects)[number]) =>
       <div class="cta">
         <a class="btn btn-primary" href="#projects">{t.seeProjects}</a>
         <a class="btn" href="#contact">{t.discuss}</a>
+        <a class="btn btn-ghost" href={withBase(t.cvFile)} download>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg>
+          {t.downloadCv}
+        </a>
       </div>
       <ul class="facts">
         {
@@ -187,6 +191,10 @@ const thumbsFor = (p: (typeof projects)[number]) =>
           <div class="eyebrow">{t.contactEyebrow}</div>
           <h2>{t.contactTitle}</h2>
           <p>{t.contactLead}</p>
+          <a class="cv-btn" href={withBase(t.cvFile)} download>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg>
+            {t.downloadCv}
+          </a>
         </div>
         <ul class="contact-list">
           <li>
@@ -461,6 +469,24 @@ const thumbsFor = (p: (typeof projects)[number]) =>
   .contact-text p {
     opacity: 0.75;
     font-size: 17px;
+  }
+  .cv-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 44px;
+    margin-top: 22px;
+    padding: 0 20px;
+    border-radius: 999px;
+    background: var(--bg);
+    color: var(--text);
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    transition: transform 0.15s ease;
+  }
+  .cv-btn:hover {
+    transform: translateY(-1px);
   }
   .contact-list {
     list-style: none;

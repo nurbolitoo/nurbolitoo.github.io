@@ -3,3 +3,5 @@ dist/
 .astro/
 *.pdf
 .preview/
+# PDF резюме для скачивания с сайта публикуются
+!public/resume/*.pdf

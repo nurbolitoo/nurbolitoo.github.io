@@ -192,6 +192,17 @@ ul {
   transform: translateY(-1px);
 }
 
+.btn-ghost {
+  background: transparent;
+  border-color: transparent;
+  color: var(--muted);
+}
+
+.btn-ghost:hover {
+  color: var(--text);
+  border-color: var(--line);
+}
+
 .btn-primary {
   background: var(--text);
   color: var(--bg);
