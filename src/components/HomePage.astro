@@ -218,7 +218,7 @@ const thumbsFor = (p: (typeof projects)[number]) =>
           </li>
           <li>
             <span>WhatsApp</span>
-            <a href={c.whatsapp} target="_blank" rel="noopener">{t.writeWhatsapp}</a>
+            <a class="wa" href={c.whatsapp} target="_blank" rel="noopener">{t.writeWhatsapp}</a>
           </li>
           <li>
             <span>GitHub</span>
@@ -499,10 +499,18 @@ const thumbsFor = (p: (typeof projects)[number]) =>
   .cv-btn:hover {
     transform: translateY(-1px);
   }
+  .contact-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  /* Соцсети прижаты к низу колонки — на уровне последнего контакта */
   .socials {
     display: flex;
     gap: 12px;
-    margin-top: 18px;
+    margin-top: auto;
+    padding-top: 18px;
+    margin-bottom: 2px;
   }
   .soc {
     display: grid;
@@ -550,6 +558,10 @@ const thumbsFor = (p: (typeof projects)[number]) =>
     font-weight: 700;
     text-decoration: none;
     overflow-wrap: anywhere;
+  }
+  /* Фирменный зелёный WhatsApp, подмешан к фону темы, чтобы читался на светлой и тёмной карточке */
+  .contact-list a.wa {
+    color: color-mix(in srgb, #25d366 72%, var(--bg));
   }
   .contact-list a:hover {
     text-decoration: underline;
