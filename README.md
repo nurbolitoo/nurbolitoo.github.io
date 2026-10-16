@@ -1,30 +1,40 @@
-# Портфолио — Нурлыбай Нурбол
+# Portfolio — Nurlybay Nurbol
 
-Статический сайт на [Astro](https://astro.build), деплой на GitHub Pages через GitHub Actions.
+Full-stack developer: web apps, ERP/CRM on Frappe/ERPNext, integrations.
 
-## Команды
+**Live site:** [nurbolitoo.github.io](https://nurbolitoo.github.io) ·
+**Upwork:** [Nurbol Nurlybay](https://www.upwork.com/freelancers/~01b9fffbe0115f9d36) ·
+**LinkedIn:** [profile](https://www.linkedin.com/in/%D0%BD%D1%83%D1%80%D0%B1%D0%BE%D0%BB-%D0%BD%D1%83%D1%80%D0%BB%D1%8B%D0%B1%D0%B0%D0%B9-607a352aa/)
+
+A static site built with [Astro](https://astro.build), deployed to GitHub Pages via GitHub Actions.
+Available in Russian (site root) and English (`/en/`).
+
+## Commands
 
 ```bash
 npm install
 npm run dev      # http://localhost:4321
-npm run build    # сборка в dist/
+npm run build    # build into dist/
 ```
 
-## Где править контент
+## Where to edit content
 
-- `src/data/profile.ts` — имя, контакты, услуги, стек, опыт, учебные проекты
-- `src/data/projects.ts` — проекты и страницы кейсов (порядок в массиве = порядок на сайте)
+- `src/data/profile.ts`: name, contacts, services, skills, experience, academic projects (Russian)
+- `src/data/projects.ts`: projects and case study pages (array order = order on the site)
+- `src/data/en/`: the same files for the English version
+- `src/i18n.ts`: interface strings for both languages
+- `resume/`: CV sources (HTML); the PDFs served by the site live in `public/resume/`
 
-Скриншоты: положите файлы в `public/projects/<slug>/` и добавьте в поле `images` проекта:
+Screenshots: put the files into `public/projects/<slug>/` and add them to the project's `images` field:
 
 ```ts
-images: [{ src: 'projects/komek-desk/dashboard.png', alt: 'Дашборд аналитики', caption: 'Аналитика для руководства' }],
+images: [{ src: 'projects/komek-desk/dashboard.png', alt: 'Analytics dashboard', caption: 'Analytics for management' }],
 ```
 
-## Деплой
+## Deployment
 
-Каждый push в ветку `main` собирает сайт и публикует его (`.github/workflows/deploy.yml`).
-В настройках репозитория: Settings → Pages → Source: **GitHub Actions**.
+Every push to `main` builds and publishes the site (`.github/workflows/deploy.yml`).
+In the repository settings: Settings → Pages → Source: **GitHub Actions**.
 
-Если репозиторий называется не `nurbolitoo.github.io`, а, например, `portfolio`,
-поменяйте в workflow `BASE_PATH: /portfolio` — тогда сайт будет по адресу `nurbolitoo.github.io/portfolio`.
+If the repository is not named `nurbolitoo.github.io` but, for example, `portfolio`,
+set `BASE_PATH: /portfolio` in the workflow, and the site will be served at `nurbolitoo.github.io/portfolio`.

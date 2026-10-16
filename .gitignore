@@ -5,3 +5,4 @@ dist/
 .preview/
 # PDF резюме для скачивания с сайта публикуются
 !public/resume/*.pdf
+upwork/
